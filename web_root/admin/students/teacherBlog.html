@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<!-- start right frame -->
+<head>
+<title>Teacher Blogs</title>
+~[wc:commonscripts]
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+<script type="text/javascript">
+$j(document).ready(function(){
+	$j('div#footer #legal > p').html('&copy; 2012-2013 Computer Logic Group. All rights reserved.');
+	$j('div#print-disclaimer').hide();
+	var h = $j('#frameMenu',window.parent.document).height();
+	var w = $j('#usercontext-bar').width();
+	var url = $j('li#tab1 a').data('url');
+	$j('li#tab1').addClass('selected');
+	
+	$j('#blogIframe').height(h).width(w);
+	//$j('div#blogDiv').resizable({minHeight: h, minWidth: 50});
+	
+	function loadBlog() {
+		$j('#blogIframe').attr('src',url);	
+	}
+	
+	$j('#blogTabs li a').click(function(e){
+		e.preventDefault();
+		$j('li.selected').removeClass('selected');
+		$j(this).parent().addClass('selected');
+		url = $j(this).data('url');
+		loadBlog();
+	});
+	
+	loadBlog();
+});
+</script>
+</head>
+
+<body>
+
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_students.log.start_page]</a> &gt; <a href="home.html?selectstudent=nosearch" target="_top">~[text:psx.html.admin_students.log.student_selection]</a> &gt; Teacher Blogs<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+~[wc:title_student_begin_css]Teacher Blogs~[wc:title_student_end_css]
+
+<!-- START blog -->
+<div id="blogDiv"> 
+	<ul id="blogTabs" class="tabs dontprintme"> 
+~[tlist_sql;    
+SELECT
+  ps_customfields.getteacherscf(t.id,'blogURL') blogURL,
+  t.last_name || ', ' || substr(t.first_name,1,1) tchr
+FROM Teachers t
+WHERE nvl(ps_customfields.getteacherscf(t.id,'blogURL'),'zzzz') != 'zzzz'
+  AND ((nvl(ps_customfields.getteacherscf(t.id,'blogScope'),'1') = '3')
+  OR (nvl(ps_customfields.getteacherscf(t.id,'blogScope'),'1') = '2' AND t.schoolid = (SELECT s.schoolid FROM Students s WHERE s.id = ~(curstudid)))
+  OR (t.id IN (SELECT cc.teacherid FROM cc INNER JOIN Terms ter ON cc.termid = ter.id AND cc.schoolid = ter.schoolid WHERE cc.studentid = ~(curstudid) AND ter.yearid = ~(curyearid) AND cc.dateleft >= sysdate)))
+ORDER BY nvl(ps_customfields.getteacherscf(t.id,'blogScope'),'1'), tchr]
+		<li id="tab~(count;-)"> <a href="#" data-url="~(url;t)">~(tchr;t)</a> </li>
+[/tlist_sql] 
+	</ul>
+    
+  <iframe id="blogIframe" frameborder="0" height="100%" width="100%" src="">None of this student's teachers have a blog to load.</iframe>
+</div>
+<!-- END blog -->
+
+~[wc:admin_footer_frame_css]
+
+</body>
+</html><!-- end right frame -->

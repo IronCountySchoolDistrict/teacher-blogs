@@ -1,0 +1,11 @@
+<script type="text/template" id="teacher-blogs-template">
+    <li>
+        <a href="blog.html?frn=~(frn)">Teacher Blogs</a>
+    </li>
+</script>
+
+<script>
+    var template = $j('#teacher-blogs-template').html();
+    var selectInsert = $j('#tchr_custom_pages');
+    selectInsert.append(template);
+</script>

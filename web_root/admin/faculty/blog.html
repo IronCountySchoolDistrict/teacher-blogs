@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<!-- start right frame -->
+<head>
+<title>Blog Settings - ~(lastfirst) &nbsp; ~(teachernumber)</title>
+~[wc:commonscripts]
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+<script type="text/javascript">
+$j(document).ready(function(){
+	$j('div#footer #legal > p').html('&copy; 2012-2013 Computer Logic Group. All rights reserved.');
+	$j('div#print-disclaimer').hide();
+	var h = $j('#frameMenu',window.parent.document).height();
+	var w = $j('#usercontext-bar').width();
+	var url = '~([Teachers]blogURL)';
+	
+	if ((url.replace('&nbsp;','') != '')&&(url != null)) { 
+		$j('#blogIframe').height(h).width(w);
+		$j('#blogIframe').attr('src',url);
+	}
+});
+</script>
+</head>
+
+<body>
+
+<form action="/admin/changesrecorded.white.html" method="POST">
+~[wc:admin_header_frame_css]<!-- breadcrumb start --><a href="/admin/home.html" target="_top">~[text:psx.html.admin_faculty.editpw.start_page]</a> &gt; <a href="/admin/faculty/search.html" target="_top">~[text:psx.html.admin_faculty.editpw.staff]</a> &gt; <a href="/admin/faculty/home.html?selectteacher=nosearch" target="_top">~[text:psx.html.admin_faculty.editpw.select_a_staff_member]</a> &gt; Blog Settings - ~(lastfirst) &nbsp; ~(teachernumber)<!-- breadcrumb end -->~[wc:admin_navigation_frame_css]
+
+<span class="account-photo">~[facultytitlephoto]</span>
+<h1>Blog Settings - ~(lastfirst) &nbsp; ~(teachernumber)</h1>
+
+<!-- start of content and bounding box -->
+<div class="box-round">
+
+<table border="0" cellspacing="0" cellpadding="4" class="fourDTable">
+  <tr class="headerRow">
+	<td class="bold">Blog Settings</td>
+	<td class="bold">Value</td>
+  </tr>
+  <tr class="~[evenoddrow;reset]">
+	<td class="bold">URL</td>
+	<td><input type="text" name="[05]blogURL" id="blogURL" value="" size="50"></td>
+  </tr>
+  <tr class="~[evenoddrow]">
+	<td class="bold">Scope</td>
+    <td>
+    <select name="[05]blogScope" id="blogScope">
+      <option value="1">Only Enrolled Sections</option>
+      <option value="2">School Wide</option>
+      <option value="3">District Wide (All Students)</option>
+    </select>
+    </td>
+  </tr>
+</table>
+
+<div class="button-row"><input type="hidden" name="ac" value="prim">
+    <input type="hidden" name="TeacherID" value="~([Teachers]ID)">~[submitbutton]</div>
+</div>
+
+  <iframe id="blogIframe" frameborder="0" height="100%" width="100%" src="">This teacher doesn't have a blog saved</iframe>
+<!-- end of content of bounding box -->
+
+~[wc:admin_footer_frame_css]
+</form>
+
+</body>
+</html><!-- end right frame -->

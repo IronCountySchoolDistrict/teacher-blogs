@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>~[text]psx.html.teachers.userprefscreen.personalize_1,param:~[x:username][/text]</title>
+~[wc:commonscripts]
+<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+<link href="/images/css/print.css" rel="stylesheet" media="print">
+</head>
+
+<body>
+
+~[wc:teachers_header_css]~[wc:teachers_navigation_css]
+~[SetPostValue:tabname=personalize]
+~[wc:teachers_nav_css]
+
+<h1>~[text]psx.html.teachers.userprefscreen.personalize_1,param:~[x:username][/text]</h1>
+
+<!-- Start of shaded content table -->
+<form action="home.html" method="POST">
+<div class="box-round">
+
+<table>
+<tr>
+<th colspan="100%">Blog Settings</th>
+</tr>
+<tr class="~[evenoddrow;reset]">
+<td class="bold">URL</td>
+<td><input type="text" name="[05]blogURL" id="blogURL" value="" size="50"></td>
+</tr>
+<tr class="~[evenoddrow]">
+<td class="bold">Scope</td>
+<td>
+<select name="[05]blogScope" id="blogScope">
+~[if#3.~(blogScope)=3]
+<option value="3">District Wide (All Students)</option>
+[else#3]
+	~[if#2.~(blogScope)=2]
+<option value="2">School Wide</option>
+    [else#2]
+<option value="1">Only Enrolled Sections</option>
+	[/if#2]
+[/if#3]
+</select>
+</td>
+</tr>
+</table>
+
+<div class="button-row"><input type="hidden" name="ac" value="webAsmt">~[submitbutton]</div>
+</div>
+<br>
+</form>
+<!-- End of shaded content table -->
+
+~[wc:teachers_footer_nf_css]
+
+
+</html>
