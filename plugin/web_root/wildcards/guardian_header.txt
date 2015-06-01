@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 ~[wc:commonscripts]
 <style type="text/css">
-#btn-blog a {background: url(/guardian/iconBlog.png) no-repeat;}
+#btn-blog a {background: url(<!-- @echo IMAGE_SERVER_URL -->/images/teacher-blogs/iconBlog.png) no-repeat;}
 </style>
 </head>
 <body id="parentPageTemp" class="psparent">

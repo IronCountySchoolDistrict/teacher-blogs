@@ -1,0 +1,19 @@
+{
+  "name": "teacher-blogs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IronCountySchoolDistrict/teacher-blogs.git"
+  },
+  "author": "IronCountySchoolDistrict",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/IronCountySchoolDistrict/teacher-blogs/issues"
+  },
+  "homepage": "https://github.com/IronCountySchoolDistrict/teacher-blogs#readme"
+}

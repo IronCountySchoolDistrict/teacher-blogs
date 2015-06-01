@@ -2,7 +2,7 @@
 <plugin xmlns="http://plugin.powerschool.pearson.com"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         description="Teacher Blogs"
-        name="*Teacher Blogs"
+        name="Teacher Blogs"
         version="1.0"
         xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd">
     <publisher name="Iron County School District Data Team">
